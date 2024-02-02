@@ -12,10 +12,11 @@ def logo():
   ██╔╝ ██╗    ██████╔╝╚██████╔╝██║ ╚═╝ ██║██████╔╝
   ╚═╝  ╚═╝    ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═════╝ 
                                                 
-  "TOOL":"XTREME SMS BOMBER",
-  "OWNER":"@tm_xtreme"
-  "VERSION":"1.0"
-  "THREAD":"60"
+  TOOL: X BOMB
+  OWNER: TEAM XTREME
+  VERSION: 2.0
+  LIMIT: UNLIMITED
+  TELEGRAM: https://t.me/tm_xtreme
     """
     print("\033[1;34m" + x + "\033[0m")  # Use ANSI escape codes for styling
 
